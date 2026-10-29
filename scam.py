@@ -1,12 +1,10 @@
+import json
 
 message = input("Paste a message to analyze: ")
 lowercase_message = message.lower()
 
-scam_rules = {
-    "Urgency": ["urgent", "immediately", "act now", "expires today"],
-    "Payment pressure": ["pay a fee", "send payment", "processing fee"],
-    "Sensitive information": ["password", "PIN", "verification code"]
-}
+with open("scam_rules.json", "r", encoding="utf-8") as file:
+    scam_rules = json.load(file)
 
 found_warnings = []
 

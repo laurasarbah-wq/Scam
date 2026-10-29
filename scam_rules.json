@@ -1,0 +1,19 @@
+
+{
+    "Urgency": [
+        "urgent",
+        "immediately",
+        "act now",
+        "expires today"
+    ],
+    "Payment pressure": [
+        "pay a fee",
+        "send payment",
+        "processing fee"
+    ],
+    "Sensitive information": [
+        "password",
+        "PIN",
+        "verification code"
+    ]
+}
