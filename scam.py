@@ -23,6 +23,14 @@ for category in found_warnings:
     risk_score += risk_weights[category]
 
 print(f"Risk score: {risk_score}/9")
+if risk_score <= 2:
+    risk_level = "Low"
+elif risk_score <= 5:
+    risk_level = "Moderate"
+else:
+    risk_level = "High"
+
+print(f"Risk level: {risk_level}")
 
 if len(found_warnings) == 0:
     print("\nNo warning signs detected by these rules.")
