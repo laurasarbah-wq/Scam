@@ -1,5 +1,5 @@
 import json
-
+import re
 message = input("Paste a message to analyze: ")
 lowercase_message = message.lower()
 
@@ -10,10 +10,9 @@ found_warnings = []
 
 for category, keywords in scam_rules.items():
     for word in keywords:
-        if word in lowercase_message:
+        pattern = r"\b" + re.escape(word) + r"\b"
+        if re.search(pattern, lowercase_message):
             found_warnings.append(category)
-            print(f"Warning: {category} detected.")
-            print(f"Reason: The message contains the phrase '{word}'.")
             break
 risk_score = 0
 with open("risk_guide.json","r",encoding="utf-8") as risk_files:
@@ -22,7 +21,6 @@ with open("risk_guide.json","r",encoding="utf-8") as risk_files:
 for category in found_warnings:
     risk_score += risk_weights[category]
 
-print(f"Risk score: {risk_score}/9")
 if risk_score <= 2:
     risk_level = "Low"
 elif risk_score <= 5:
@@ -30,6 +28,16 @@ elif risk_score <= 5:
 else:
     risk_level = "High"
 
+print("\n--- ScamX Analysis Report ---")
+
+if found_warnings:
+    print("Warning signs found:")
+    for category in found_warnings:
+        print(f"- {category}")
+else:
+    print("No warning signs detected.")
+
+print(f"\nFinal score: {risk_score}/9")
 print(f"Risk level: {risk_level}")
 
 if len(found_warnings) == 0:

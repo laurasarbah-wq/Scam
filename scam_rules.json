@@ -13,7 +13,7 @@
     ],
     "Sensitive information": [
         "password",
-        "PIN",
+        "pin",
         "verification code"
     ]
 }
