@@ -15,6 +15,14 @@ for category, keywords in scam_rules.items():
             print(f"Warning: {category} detected.")
             print(f"Reason: The message contains the phrase '{word}'.")
             break
+risk_score = 0
+with open("risk_guide.json","r",encoding="utf-8") as risk_files:
+    risk_guide = json.load(risk_files)
+    risk_weights = risk_guide["weights"]
+for category in found_warnings:
+    risk_score += risk_weights[category]
+
+print(f"Risk score: {risk_score}/9")
 
 if len(found_warnings) == 0:
     print("\nNo warning signs detected by these rules.")

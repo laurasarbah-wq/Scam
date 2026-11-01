@@ -1,0 +1,26 @@
+
+{
+    "weights": {
+        "Urgency": 2,
+        "Payment pressure": 3,
+        "Sensitive information": 4
+    },
+    "maximum_score": 9,
+    "levels": {
+        "low": {
+            "minimum": 0,
+            "maximum": 2,
+            "message": "Few warning signs detected. Still verify unexpected requests."
+        },
+        "moderate": {
+            "minimum": 3,
+            "maximum": 5,
+            "message": "Several warning signs detected. Verify through an official channel."
+        },
+        "high": {
+            "minimum": 6,
+            "maximum": 9,
+            "message": "Multiple or serious warning signs detected. Do not act until you independently verify the request."
+        }
+    }
+}
